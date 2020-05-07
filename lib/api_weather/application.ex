@@ -19,5 +19,5 @@ defmodule ApiWeather.Application do
     Supervisor.start_link(children, opts)
   end
 
-  defp getPort(), do: Application.get_env(:api_weather, :port) |> String.to_integer()
+  defp getPort, do: Application.get_env(:api_weather, :port) |> String.to_integer
 end

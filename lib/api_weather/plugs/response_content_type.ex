@@ -3,8 +3,5 @@ defmodule ApiWeather.Plug.ResponseContentType do
 
   def init(options), do: options
 
-  def call(conn, _opts) do
-    conn
-    |> put_resp_content_type("application/json")
-  end
+  def call(conn, _opts), do: put_resp_content_type(conn,"application/json")
 end

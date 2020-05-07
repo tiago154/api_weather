@@ -1,6 +1,9 @@
 defmodule ApiWeather.Controllers.City do
   import Plug.Conn
 
+  @url_api_weather "http://api.openweathermap.org/data/2.5/weather?q="
+  @appid Application.get_env(:api_weather, :weather_api_key)
+
   def init(options), do: options
 
   def call(conn, _opts) do
@@ -10,20 +13,11 @@ defmodule ApiWeather.Controllers.City do
     end
   end
 
-  # case HTTPoison.get(url) do
-  #   {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-  #     IO.puts body
-  #   {:ok, %HTTPoison.Response{status_code: 404}} ->
-  #     IO.puts "Not found :("
-  #   {:error, %HTTPoison.Error{reason: reason}} ->
-  #     IO.inspect reason
-  # end
   defp get(conn) do
-    url = "http://api.openweathermap.org/data/2.5/weather?q=#{conn.path_params["city"]}&APPID=cb12f01fbb0a138642be7cc763645842"
-
-    response = HTTPoison.get!(url)
-
-    conn
-    |> send_resp(200, response.body)
+    city = conn.params["city"]
+    response = build_url(@url_api_weather, city, @appid) |> HTTPoison.get!
+    send_resp(conn,200, response.body)
   end
+
+  defp build_url(base_path, city, appid), do: "#{base_path}#{city}&APPID=#{appid}"
 end

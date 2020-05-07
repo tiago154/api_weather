@@ -14,7 +14,7 @@ defmodule ApiWeather.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :plug_cowboy, :poison, :httpoison],
+      extra_applications: [:logger, :plug_cowboy, :httpoison],
       mod: {ApiWeather.Application, []}
     ]
   end
@@ -23,7 +23,6 @@ defmodule ApiWeather.MixProject do
   defp deps do
     [
       {:plug_cowboy, "~> 2.0"},
-      {:poison, "~> 3.1"},
       {:httpoison, "~> 1.6"},
       {:earmark, "~> 1.2", only: :dev},
       {:ex_doc, "~> 0.19", only: :dev}
