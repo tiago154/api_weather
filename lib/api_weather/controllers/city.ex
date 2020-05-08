@@ -4,8 +4,8 @@ defmodule ApiWeather.Controllers.City do
   plug(:match)
   plug(:dispatch)
 
-  @url_api_weather "http://api.openweathermap.org/data/2.5/weather?q="
-  @appid Application.get_env(:api_weather, :weather_api_key)
+  @url_api_weather "http://api.openweathermap.org/data/2.5/weather?units=metric&q="
+  @appid :application.get_env(:api_weather, :weather_api_key) |> elem(1)
 
   get "/" do
     city = conn.params["city"]
