@@ -20,6 +20,7 @@ defmodule ApiWeather.Router do
     |> send_resp(302, "/docs")
   end
 
+
   forward("/city/:city", to: ApiWeather.Controllers.City)
 
   match _ do
