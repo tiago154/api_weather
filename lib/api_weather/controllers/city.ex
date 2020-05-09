@@ -9,8 +9,8 @@ defmodule ApiWeather.Controllers.City do
 
   get "/" do
     city = conn.params["city"]
-    response = build_url(@url_api_weather, city, @appid) |> HTTPoison.get!
-    send_resp(conn,200, response.body)
+    response = build_url(@url_api_weather, city, @appid) |> HTTPoison.get!()
+    send_resp(conn, 200, response.body)
   end
 
   match _ do

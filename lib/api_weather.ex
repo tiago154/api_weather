@@ -6,7 +6,7 @@ defmodule ApiWeather.Router do
 
   plug(Plug.Static, at: "/docs", from: {:api_weather, "priv/static/doc/"})
   plug(:match)
-  plug ResponseContentType
+  plug(ResponseContentType)
   plug(:dispatch)
 
   get "/" do
@@ -19,7 +19,6 @@ defmodule ApiWeather.Router do
     |> put_resp_header("location", "/docs/index.html")
     |> send_resp(302, "/docs")
   end
-
 
   forward("/city/:city", to: ApiWeather.Controllers.City)
 
