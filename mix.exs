@@ -15,6 +15,15 @@ defmodule ApiWeather.MixProject do
       homepage_url: "https://github.com/tiago154/api_weather",
       docs: [
         extras: ["README.md"]
+      ],
+
+      # Tests
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
       ]
     ]
   end
@@ -33,7 +42,8 @@ defmodule ApiWeather.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.6"},
       {:earmark, "~> 1.2", only: :dev},
-      {:ex_doc, "~> 0.19", only: :dev}
+      {:ex_doc, "~> 0.19", only: :dev},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 end
