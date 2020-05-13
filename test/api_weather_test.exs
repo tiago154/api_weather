@@ -1,7 +1,7 @@
 defmodule ApiWeatherTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
+  import Mock
   use Plug.Test
-  doctest ApiWeather.Router
 
   alias ApiWeather.Router
 
@@ -41,14 +41,15 @@ defmodule ApiWeatherTest do
     assert response.resp_body == expected_body
   end
 
-  # Verificar lib https://hexdocs.pm/mox/Mox.html
-  @tag runnable: false
   test "/city returns welcome" do
-    expected_body = ""
+    with_mock ApiWeather.Services.Weather,
+      request: fn _url -> %HTTPoison.Response{body: "test"} end do
+      expected_body = "test"
 
-    response = conn(:get, "/city/c") |> Router.call(@opts)
+      response = conn(:get, "/city/c") |> Router.call(@opts)
 
-    assert response.status == 200
-    assert response.resp_body == expected_body
+      assert response.status == 200
+      assert response.resp_body == expected_body
+    end
   end
 end

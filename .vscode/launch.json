@@ -10,21 +10,6 @@
       "request": "launch",
       "projectDir": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart"
-    },
-    {
-      "type": "mix_task",
-      "name": "mix test",
-      "request": "launch",
-      "task": "test",
-      "taskArgs": [
-        "--trace"
-      ],
-      "startApps": true,
-      "projectDir": "${workspaceRoot}",
-      "requireFiles": [
-        "test/**/test_helper.exs",
-        "test/**/*_test.exs"
-      ]
     }
   ]
 }

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="ApiWeather v0.1.0">
-    <title>ApiWeather — ApiWeather v0.1.0</title>
+    <title>Service — ApiWeather v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
     <script src="dist/sidebar_items-8af64afb6e.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
-  <body data-type="extras">
+  <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
@@ -62,23 +62,64 @@ ApiWeather      </a>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-<h1>ApiWeather</h1>
-<p><strong>TODO: Add description</strong></p>
-<h2 id="installation" class="section-heading">
-  <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Installation
-</h2>
+      <h1>
+        <small class="app-vsn">ApiWeather v0.1.0</small>
+Service <small>behaviour</small>          <a href="https://github.com/tiago154/api_weather/blob/master/lib/api_weather/behaviours/service.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
 
-<p>If <a href="https://hex.pm/docs/publish">available in Hex</a>, the package can be installed
-by adding <code class="inline">api_weather</code> to your list of dependencies in <code class="inline">mix.exs</code>:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="8474568344-1">do</span><span class="w">
-  </span><span class="p" data-group-id="8474568344-2">[</span><span class="w">
-    </span><span class="p" data-group-id="8474568344-3">{</span><span class="ss">:api_weather</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="8474568344-3">}</span><span class="w">
-  </span><span class="p" data-group-id="8474568344-2">]</span><span class="w">
-</span><span class="k" data-group-id="8474568344-1">end</span></code></pre>
-<p>Documentation can be generated with <a href="https://github.com/elixir-lang/ex_doc">ExDoc</a>
-and published on <a href="https://hexdocs.pm">HexDocs</a>. Once published, the docs can
-be found at <a href="https://hexdocs.pm/api_weather">https://hexdocs.pm/api_weather</a>.</p>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:request/1">request(url)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:request/1">
+  <div class="detail-header">
+    <a href="#c:request/1" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">request(url)</h1>
+      <a href="https://github.com/tiago154/api_weather/blob/master/lib/api_weather/behaviours/service.ex#L2" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>request(url :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
       <footer class="footer">
         <p>
           <span class="line">

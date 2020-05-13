@@ -1,5 +1,6 @@
 defmodule ApiWeather.Controllers.City do
   use Plug.Router
+  alias ApiWeather.Services.Weather
 
   plug(:match)
   plug(:dispatch)
@@ -9,7 +10,7 @@ defmodule ApiWeather.Controllers.City do
 
   get "/" do
     city = conn.params["city"]
-    response = build_url(@url_api_weather, city, @appid) |> HTTPoison.get!()
+    response = build_url(@url_api_weather, city, @appid) |> Weather.request()
     send_resp(conn, 200, response.body)
   end
 

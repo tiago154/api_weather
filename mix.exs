@@ -43,7 +43,8 @@ defmodule ApiWeather.MixProject do
       {:httpoison, "~> 1.6"},
       {:earmark, "~> 1.2", only: :dev},
       {:ex_doc, "~> 0.19", only: :dev},
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:mock, "~> 0.3.4", only: :test}
     ]
   end
 end
