@@ -24,7 +24,9 @@ defmodule ApiWeather.MixProject do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
-      ]
+      ],
+      elixirc_options: [warnings_as_errors: true],
+      elixirc_paths: elixirc_paths(Mix.env())
     ]
   end
 
@@ -36,6 +38,9 @@ defmodule ApiWeather.MixProject do
     ]
   end
 
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
@@ -44,7 +49,8 @@ defmodule ApiWeather.MixProject do
       {:earmark, "~> 1.2", only: :dev},
       {:ex_doc, "~> 0.19", only: :dev},
       {:excoveralls, "~> 0.10", only: :test},
-      {:mock, "~> 0.3.4", only: :test}
+      {:mock, "~> 0.3.4", only: :test},
+      {:mox, "~> 0.5.2", only: :test}
     ]
   end
 end

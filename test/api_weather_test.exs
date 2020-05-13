@@ -1,9 +1,12 @@
 defmodule ApiWeatherTest do
   use ExUnit.Case, async: true
-  import Mock
   use Plug.Test
 
   alias ApiWeather.Router
+
+  import Mox
+
+  setup :verify_on_exit!
 
   @opts Router.init([])
 
@@ -41,15 +44,15 @@ defmodule ApiWeatherTest do
     assert response.resp_body == expected_body
   end
 
-  test "/city returns welcome" do
-    with_mock ApiWeather.Services.Weather,
-      request: fn _url -> %HTTPoison.Response{body: "test"} end do
-      expected_body = "test"
+  test "/city:city must call route correctly" do
+    ServiceMock
+    |> expect(:request, fn _url -> %HTTPoison.Response{body: "test"} end)
 
-      response = conn(:get, "/city/c") |> Router.call(@opts)
+    expected_body = "test"
 
-      assert response.status == 200
-      assert response.resp_body == expected_body
-    end
+    response = conn(:get, "/city/c") |> Router.call(@opts)
+
+    assert response.status == 200
+    assert response.resp_body == expected_body
   end
 end

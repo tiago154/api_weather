@@ -3,7 +3,7 @@ MIX=mix
 compile:
 	$(MIX) compile
 
-runtest:
+run-test:
 	$(MIX) test --color
 
 coverage:
@@ -12,7 +12,7 @@ coverage:
 docrun:
 	$(MIX) docs && http-server doc/
 
-run dev:
+run-dev:
 	sh scripts\run-dev.sh
 
 updatedocs:

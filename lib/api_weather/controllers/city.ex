@@ -1,6 +1,5 @@
 defmodule ApiWeather.Controllers.City do
   use Plug.Router
-  alias ApiWeather.Services.Weather
 
   plug(:match)
   plug(:dispatch)
@@ -8,9 +7,15 @@ defmodule ApiWeather.Controllers.City do
   @url_api_weather "http://api.openweathermap.org/data/2.5/weather?units=metric&q="
   @appid :application.get_env(:api_weather, :weather_api_key) |> elem(1)
 
+  @service_weather Application.get_env(
+                     :api_weather,
+                     :service_weather,
+                     ApiWeather.Services.Weather
+                   )
+
   get "/" do
     city = conn.params["city"]
-    response = build_url(@url_api_weather, city, @appid) |> Weather.request()
+    response = build_url(@url_api_weather, city, @appid) |> @service_weather.request()
     send_resp(conn, 200, response.body)
   end
 
