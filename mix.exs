@@ -46,8 +46,8 @@ defmodule ApiWeather.MixProject do
     [
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.6"},
-      {:earmark, "~> 1.2", only: :dev},
-      {:ex_doc, "~> 0.19", only: :dev},
+      {:earmark, "~> 1.2"},
+      {:ex_doc, "~> 0.19"},
       {:excoveralls, "~> 0.10", only: :test},
       {:mock, "~> 0.3.4", only: :test},
       {:mox, "~> 0.5.2", only: :test}
