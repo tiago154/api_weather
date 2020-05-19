@@ -29,15 +29,14 @@ jobs:
     - name: Build
       run: mix compile
 
-    - name: Build
+    - name: Create Docs
       run: mix docs
 
     - name: Run Tests
       run: mix coveralls.github
 
-    - name: Deploy
+    - name: Deploy Docs
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
         FOLDER: doc

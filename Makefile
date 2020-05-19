@@ -14,6 +14,3 @@ docrun:
 
 run-dev:
 	sh scripts\run-dev.sh
-
-updatedocs:
-	$(MIX) docs && cp -r doc priv/static
