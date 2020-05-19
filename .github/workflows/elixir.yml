@@ -29,5 +29,8 @@ jobs:
     - name: Build
       run: mix compile
 
+    - name: Build
+      run: mix docs
+
     - name: Run Tests
       run: mix coveralls.github
