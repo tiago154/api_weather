@@ -32,6 +32,8 @@ jobs:
       run: mix compile
 
     - name: Create Docs
+      env:
+        MIX_ENV: dev
       run: mix docs
 
     - name: Run Tests
