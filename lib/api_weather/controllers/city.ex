@@ -5,9 +5,8 @@ defmodule ApiWeather.Controllers.City do
   plug(:dispatch)
 
   @url_api_weather "http://api.openweathermap.org/data/2.5/weather?units=metric&q="
-  @appid :application.get_env(:api_weather, :weather_api_key) |> elem(1)
 
-  @service_weather Application.get_env(
+  @service_weather Application.compile_env(
                      :api_weather,
                      :service_weather,
                      ApiWeather.Services.Weather
@@ -15,12 +14,16 @@ defmodule ApiWeather.Controllers.City do
 
   get "/" do
     city = conn.params["city"]
-    response = build_url(@url_api_weather, city, @appid) |> @service_weather.request()
+    response = build_url(@url_api_weather, city, appid()) |> @service_weather.request()
     send_resp(conn, 200, response.body)
   end
 
   match _ do
     send_resp(conn, 404, "Requested page not found!")
+  end
+
+  defp appid do
+    Application.get_env(:api_weather, :weather_api_key)
   end
 
   defp build_url(base_path, city, appid), do: "#{base_path}#{city}&APPID=#{appid}"
