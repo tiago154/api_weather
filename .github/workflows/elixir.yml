@@ -2,6 +2,7 @@ name: Elixir CI
 env:
   MIX_ENV: test
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }} # variável para testes e runtime
 
 on:
   push:
@@ -11,17 +12,18 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup elixir
-      uses: actions/setup-elixir@v1
+    - name: Setup Elixir and Erlang
+      uses: erlef/setup-beam@v1
       with:
-        elixir-version: 1.19.1 # Define the elixir version [required]
-        otp-version: 28 # Define the OTP version [required]
+        elixir-version: 1.19.1
+        otp-version: 28.1
+        install-hex: true
+        install-rebar: true
 
     - name: Install Dependencies
       run: mix deps.get
@@ -33,6 +35,8 @@ jobs:
       run: mix docs
 
     - name: Run Tests
+      env:
+        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }} # garante acesso à chave nos testes
       run: mix coveralls.github
 
     - name: Deploy Docs
